@@ -1,95 +1,46 @@
-# MeowConsole Mod Introduction
+# 🐾 Meow Console
 
-`MeowConsole` is a server-side enhancement mod built for **Fabric 26.1 + Java 25**.  
-It brings a Paper-like experience to Fabric servers: a better console, practical anti-xray, and strong performance under real gameplay load.
+**A focused server-side operations toolkit for Fabric and NeoForge.**
 
----
+Keep your console readable, your server health visible, and routine admin work fast. Meow Console is built for dedicated-server owners who want practical tools without installing anything on players' clients.
 
-## Why Choose MeowConsole
+[![Modrinth Download](https://img.shields.io/badge/Modrinth-Download-1bd96a?style=flat-square&logo=modrinth&logoColor=white)](https://modrinth.com/mod/meowconsole) [![GitHub Wiki](https://img.shields.io/badge/GitHub-Wiki-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/xiaoyiluck666/meowconsole/wiki) [![GitHub Source](https://img.shields.io/badge/GitHub-Source-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/xiaoyiluck666/meowconsole) [![Submit Issue](https://img.shields.io/badge/GitHub-Submit%20Issue-d73a4a?style=flat-square&logo=github&logoColor=white)](https://github.com/xiaoyiluck666/meowconsole/issues/new/choose)
 
-### 1. Better Console, Better Operations
+💖 **Support development:** [PayPal](https://www.paypal.com/paypalme/neworldcn) · [Afdian](https://afdian.com/a/xiaoyiluck)
 
-- Terminal command highlighting
-- `Tab` completion support (vanilla commands + local commands)
-- Built-in local commands: `mods`, `antixray status/reload/profile/debug`, `tps`, `mspt`, `entities <world> [keyword]`
-- Entity-stat aliases: `entitycount`, `mobs`
-- Earlier console takeover during server startup, so the terminal becomes usable sooner
-- Clear startup logs for quick operational checks, including config source visibility
+## ✨ What makes it useful?
 
-### 2. Practical Anti-Xray for Real Servers
+- 🖥️ **Console clarity**: Paper-like colorful output, terminal-width-aware dashboards, local command completion, persistent history, and safe console log filtering.
+- 📊 **Fast diagnostics**: Health status, TPS/MSPT, paged entity counts, mod lists, alerts, and update checks in one place.
+- 👋 **Player experience tools**: Custom join/leave messages, threshold-based night skipping, and flight guard utilities.
+- 🔌 **Hosting compatibility**: Velocity / FabricProxy-Lite helpers plus MCDR and common panel-host support for stdout and vanilla console input.
+- 🛠️ **Remote administration**: Cross-loader administrator/RCON commands including `status`, `health`, `alerts`, `tps`, `mspt`, `mods`, `entities`, `console`, `reload`, and `update`, with native permission nodes when the loader API provides them and vanilla operator-level fallbacks.
+- 🧩 **Server-side only**: Made for dedicated servers, proxy networks, and long-running survival servers; clients do not need the mod.
 
-- Obfuscation is applied before chunk packet delivery
-- Per-dimension anti-xray configuration (Overworld / Nether / End)
-- Reveal behavior with controlled update radius
-- Engine-mode-2 oriented optimization for both protection and performance
-- Fixes the visual mismatch where the mined target block did not reveal immediately
-- Fixes one class of stale fake-ore visuals after breaking nearby cover blocks
-- Adds `antixray debug` for direct block-state troubleshooting
+## 🧭 Included tools
 
-### 3. Proven Performance Improvements
+The local console includes `health`, `alerts`, `entities`, `messages`, `mcdr`, `sleep`, `flight`, `velocity`, `mods`, `tps`, `mspt`, and `console`. The colorful startup dashboard automatically switches between compact and full layouts based on terminal width. Health output covers uptime, heap use, players, worlds, TPS, and MSPT. Remote operations have separate read-only and administrative permission nodes where the loader API supports them, with clear OP 2/4 fallbacks. Guarded configuration writes, validation, reload support, and non-blocking update checks make routine maintenance safer and less disruptive.
 
-This mod has been optimized through repeated Spark profiling in high-throughput scenarios (fast movement and heavy chunk streaming), including:
+## 📦 Compatibility and downloads
 
-- replacing per-block update spam with section-batched updates
-- using fast nearby-section exposure checks
-- skipping sections that cannot contain target blocks
-- reducing unnecessary tick-time scans
+- Minecraft: `26.1`, `26.1.1`, `26.1.2`, `26.2`, and `26.3`
+- Loaders: Fabric and NeoForge
+- Java: `25` or newer
+- Environment: dedicated server
 
-The result is a significantly lower anti-xray overhead compared to early versions.
+⚠️ **Choose the JAR that matches both your Minecraft version and loader.** These builds are tested separately; cross-version binary compatibility is not assumed.
 
----
+## 🚨 Anti-Xray is a separate mod
 
-## Who Is It For
+Since `Meow Console 1.3.0`, this project focuses on console and server operations and **does not include anti-xray**.
 
-- Server owners who want Fabric ecosystem + Paper-like admin experience
-- Servers that need anti-xray with controllable performance impact
-- Operators who value a more productive terminal workflow
+Need anti-xray protection? Install **MeowAnti-Xray** alongside Meow Console:
 
----
+👉 https://modrinth.com/mod/meowanti-xray
 
-## Core Commands
+The two mods are intentionally separate, so you can install exactly the server features you need.
 
-```bash
-mods
-mods user|all|loaded|unloaded|system [keyword]
-antixray status
-antixray reload
-antixray profile
-antixray debug <world> <x> <y> <z>
-tps
-mspt
-entities <world> [keyword]
-entitycount <world> [keyword]
-mobs <world> [keyword]
-```
+## 🔗 Links
 
----
-
-## Configuration Behavior
-
-- Config path: `config/meowconsole-paper.yml`
-- Full config is generated on first run
-- Missing keys are supplemented in place on load/reload without rewriting the whole existing file
-- Default `max-block-height` is `64`
-- `antixray status` / `antixray reload` show config source and active summary
-- Config read failures now log a clear warning before falling back to defaults
-
----
-
-## One-Line Summary
-
-**MeowConsole = Paper-like console experience + production-grade anti-xray optimization for Fabric servers.**
-
----
-
-## Repository & Issues
-
-- Repository: `https://github.com/xiaoyiluck666/meowconsole`
-- Issues: `https://github.com/xiaoyiluck666/meowconsole/issues`
-
----
-
-## Author
-
-- `xiaoyiluck`
-
+- Source and feedback: https://github.com/xiaoyiluck666/meowconsole
+- Issues: https://github.com/xiaoyiluck666/meowconsole/issues

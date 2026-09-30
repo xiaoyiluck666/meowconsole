@@ -1,107 +1,46 @@
-# MeowConsole 模组简介
+# 🐾 Meow Console
 
-`MeowConsole` 是一款专为 **Fabric 26.1 + Java 25** 设计的服务端增强模组。  
-它把你熟悉的 Paper 体验带到 Fabric：更好用的控制台、更实战的 Anti-Xray、更稳定的高负载表现。
+**面向 Fabric 与 NeoForge 的专用服务器运维工具箱。**
 
----
+让控制台更清晰，让服务器状态更直观，让管理员的日常操作更快完成。Meow Console 专为专用服务端设计，玩家客户端无需安装。
 
-## 为什么选择 MeowConsole
+[![Modrinth 下载](https://img.shields.io/badge/Modrinth-%E4%B8%8B%E8%BD%BD-1bd96a?style=flat-square&logo=modrinth&logoColor=white)](https://modrinth.com/mod/meowconsole) [![GitHub Wiki 文档](https://img.shields.io/badge/GitHub-Wiki%20%E6%96%87%E6%A1%A3-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/xiaoyiluck666/meowconsole/wiki) [![GitHub 源码](https://img.shields.io/badge/GitHub-%E6%BA%90%E7%A0%81-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/xiaoyiluck666/meowconsole) [![提交 Issue](https://img.shields.io/badge/GitHub-%E6%8F%90%E4%BA%A4%20Issue-d73a4a?style=flat-square&logo=github&logoColor=white)](https://github.com/xiaoyiluck666/meowconsole/issues/new/choose)
 
-### 1. 控制台更好用，运维效率更高
+💖 **支持项目开发：** [PayPal](https://www.paypal.com/paypalme/neworldcn) · [爱发电](https://afdian.com/a/xiaoyiluck)
 
-- 支持终端命令高亮
-- 支持 `Tab` 补全（原版命令 + 本地命令）
-- 支持本地管理命令：`mods`、`antixray status/reload/profile/debug`、`tps`、`mspt`、`entities <世界> [关键词]`
-- 新增 Velocity 接入管理命令：`velocity status`、`velocity reload`（可自动桥接 FabricProxy-Lite 配置）
-- 支持实体统计别名：`entitycount`、`mobs`
-- 控制台接管更早，服务端启动阶段更快进入可操作状态
-- 启动日志信息更清晰，便于快速确认模块状态与当前配置来源
+## ✨ 它能解决什么问题？
 
-### 2. Anti-Xray 更实战，专治透视
+- 🖥️ **控制台更清晰**：Paper-like 彩色输出、终端宽度自适应面板、本地命令补全、持久命令历史和安全的控制台日志过滤。
+- 📊 **排查问题更快**：健康状态、TPS/MSPT、分页实体统计、模组列表、告警和更新检查集中查看。
+- 👋 **玩家体验工具**：自定义加入/离开消息、达到门槛自动跳夜、飞行保护。
+- 🔌 **适配托管环境**：Velocity / FabricProxy-Lite 辅助配置，并兼容 MCDR 与常见面板宿主的 stdout、原版控制台输入。
+- 🛠️ **远程管理方便**：Fabric 与 NeoForge 通用管理员/RCON 命令，包括 `status`、`health`、`alerts`、`tps`、`mspt`、`mods`、`entities`、`console`、`reload`、`update`；在 Loader 权限 API 可用时提供原生权限节点，并保留 OP 等级回退。
+- 🧩 **纯服务端模组**：适合专用服务器、代理网络和长期运行的生存服，玩家无需安装。
 
-- 区块发送前混淆（不是简单后置假矿补丁）
-- 支持按维度独立配置（主世界/下界/末地可分开调）
-- 支持回真机制与更新半径控制
-- `engine-mode 2` 方向优化，兼顾防透视效果与性能
-- 修复“开始挖掘目标方块时未立即回真”的材质错位问题
-- 修复“挖掉遮挡块后，邻近假矿未及时回真”的一类显示残留问题
-- 新增 `antixray debug`，便于直接排查某个方块是真矿、假矿还是应回真状态
+## 🧭 内置工具
 
-### 3. 性能优化可验证
+本地控制台提供 `health`、`alerts`、`entities`、`messages`、`mcdr`、`sleep`、`flight`、`velocity`、`mods`、`tps`、`mspt`、`console`。彩色启动面板可按终端宽度自动切换紧凑/完整布局；健康状态包含运行时间、堆内存、玩家数、世界数、TPS 与 MSPT；远程操作在 Loader 权限 API 可用时提供独立的只读与管理权限节点，并明确回退到 OP 2/4。配置写入带保护，支持重载和校验，更新检查不会阻塞服务器主线程。
 
-模组经过多轮 Spark 实测优化，核心改进包括：
+## 📦 兼容版本与下载
 
-- 从逐方块更新改为 section 批量处理
-- 暴露判定走快速路径（邻接 section）
-- 跳过不可能含目标矿的 section
-- 减少 tick 阶段无效遍历
+- Minecraft：`26.1`、`26.1.1`、`26.1.2`、`26.2`、`26.3`
+- Loader：Fabric、NeoForge
+- Java：`25` 或更高版本
+- 环境：专用服务端
 
-在“高速跑图/高区块吞吐”场景下，Anti-Xray 开销已明显下降，适合长期运行。
+⚠️ **请下载同时匹配 Minecraft 版本和 Loader 的 JAR。** 每个版本都经过独立构建与测试，不保证跨版本二进制兼容。
 
----
+## 🚨 反矿透是独立模组
 
-## 适用人群
+从 `Meow Console 1.3.0` 开始，本项目专注控制台与服务端运维，**不再内置反矿透**。
 
-- 想用 Fabric 生态，但又希望获得接近 Paper 的服主体验
-- 有反透视需求，且希望性能可控
-- 需要更高效服务端控制台与运维命令支持的管理员
+需要反矿透保护？请将 **MeowAnti-Xray** 与 Meow Console 一起安装：
 
----
+👉 https://modrinth.com/mod/meowanti-xray
 
-## 核心命令
+两个模组刻意分开维护，你可以按服务器实际需求选择安装。
 
-```bash
-mods
-mods user|all|loaded|unloaded|system [keyword]
-antixray status
-antixray reload
-antixray profile
-antixray debug <world> <x> <y> <z>
-velocity status
-velocity reload
-tps
-mspt
-entities <world> [keyword]
-entitycount <world> [keyword]
-mobs <world> [keyword]
-```
+## 🔗 链接
 
----
-
-## 配置特点
-
-- 配置文件：`config/meowconsole-paper.yml`
-- Velocity 桥接配置：`config/meowconsole-velocity.yml`
-- 可自动写入 FabricProxy-Lite 配置：`config/FabricProxy-Lite.toml`
-- 首次自动生成完整配置
-- 后续仅增量补齐缺失项，不整份重写已有配置
-- 默认 `max-block-height: 64`
-- `antixray status` / `antixray reload` 会显示配置来源与当前生效摘要
-- 如果配置文件读取失败，会明确告警并回退默认配置
-
----
-
-## Velocity 接入说明
-
-- `FabricProxy-Lite` 为 **Velocity 子功能的软依赖**（功能级依赖）
-- 不使用 Velocity 网络时，可不安装 `FabricProxy-Lite`，MeowConsole 其余功能照常可用
-- 需要接入 Velocity（尤其 `modern forwarding`）时，必须在 Fabric 服务端安装 `FabricProxy-Lite`
-- `velocity status` 可快速确认当前桥接是否生效、配置是否加载成功
-- `velocity reload` 可重载桥接配置并同步写入 `FabricProxy-Lite.toml`（若启用自动写入）
-
----
-
-## 一句话总结
-
-**MeowConsole = Fabric 服务器的“控制台体验升级 + Anti-Xray 性能化落地方案”。**  
-更省心、更好管、更能扛。
-
----
-
-## 仓库与反馈
-
-- 仓库：`https://github.com/xiaoyiluck666/meowconsole`
-- Issues：`https://github.com/xiaoyiluck666/meowconsole/issues`
-
-
----
+- 源码与反馈：https://github.com/xiaoyiluck666/meowconsole
+- 问题反馈：https://github.com/xiaoyiluck666/meowconsole/issues
